@@ -6,6 +6,8 @@ const Header = () => {
   const [showUl, setShowUl] = useState(false);
   const [showListIcon, setShowListIcon] = useState(true);
   const siteMenuRef = useRef(null);
+  let chevron = true;
+  // const [check, setCheck] = useState(false)
 
   const toggleSiteVisibility = () => {
     setSiteVisible(!isSiteVisible);
@@ -32,6 +34,10 @@ const Header = () => {
     if (siteMenu) {
       siteMenu.style.display = siteMenu.style.display === 'none' ? 'block' : 'none';
     }
+    // setCheck(!check)
+    chevron = !chevron;
+    console.log(chevron)
+    console.log(chevron ? "bi bi-chevron-up" : "bi bi-chevron-down")
   };
 
   return (
@@ -47,7 +53,7 @@ const Header = () => {
           <ul className='login_gnb'>
             <li><a href="#none"><span>메뉴추천가이드</span></a></li>
             <li><div className='d-flex justify-content-between'><a href="#none"><span>메뉴안내</span></a>
-              <span className='chevron' onClick={toggleSiteMenu}></span></div>
+              <span onClick={toggleSiteMenu}><i className={`${chevron ? "bi bi-chevron-down" : "bi bi-chevron-up"}`} style={{ transform: "rotateY(180)" }}></i>{/*<i className={`bi bi-chevron-${check ? "down" : "up"}`}></i>*/}</span></div>
               <ul ref={siteMenuRef} className='site_menu'>
                 <li><a href="#none">1리터 대용량</a></li>
                 <li><a href="#none">1.1리터 보틀</a></li>
@@ -64,13 +70,13 @@ const Header = () => {
           </ul>
           {isSiteVisible && (
             <div className='closebtn'>
-              <button onClick={toggleSiteVisibility}><i class="bi bi-x-lg"></i></button>
+              <button onClick={toggleSiteVisibility}><i className="bi bi-x-lg"></i></button>
             </div>
           )}
-        </div>
+        </div >
       )}
       <header id='hd' className='mycontainer mx-auto justify-content-between d-flex align-items-center'>
-        <h1><a href=""></a></h1>
+        <h1><a href="#none"></a></h1>
         {showUl && (
           <ul className='d-flex justify-content-center align-items-center'>
             <li className='px-2'><a href="#none"><span>메뉴추천가이드</span></a></li>
@@ -87,6 +93,7 @@ const Header = () => {
           )}
         </div>
       </header>
+      {/* <div style={{ backgroundColor: "red", width: "50vw", height: "30vh" }}>asd</div> */}
     </>
   );
 };

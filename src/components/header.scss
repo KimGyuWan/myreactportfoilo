@@ -4,8 +4,7 @@
   position: absolute;
   background-color: white;
   right: 0;
-
-
+  z-index: 2;
   .login {
     background-color: #2b2b2b;
     padding: 25px;
@@ -24,12 +23,16 @@
     font-size: 0.8rem;
   }
 
+  .arrow {
+    transition: 0.5s;
+  }
+
   .chevron::after {
     content: "\F282";
     font-family: bootstrap-icons !important;
   }
 
-  .login_gnb>li {
+  .login_gnb > li {
     border-bottom: 1px solid #ccc;
     white-space: wrap;
 
@@ -55,7 +58,6 @@
       display: block;
       padding: 10px 20px;
     }
-
   }
 }
 
