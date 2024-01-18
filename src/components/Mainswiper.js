@@ -1,24 +1,23 @@
 import React, { useState, useRef } from "react";
 import "./mainswiper.scss";
+import { H2, RightButton, MarginY } from './style/Commonui';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
-import "swiper/scss/navigation";
-import "swiper/scss/pagination";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
-SwiperCore.use([Autoplay, Pagination]);
+SwiperCore.use([Autoplay]);
 
 function Mainswiper() {
-  const [swiper, setSwiper] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const swiperRef = useRef(null);
+  const [realIndex, setRealIndex] = useState(0);
+  const storeswiperRef = useRef(null);
 
   const togglePlay = () => {
     const buttonToggle = document.querySelector(".toggle");
-    const swiperInstance = swiperRef.current.swiper;
+    const swiperInstance = storeswiperRef.current.swiper;
 
     if (isPlaying) {
       swiperInstance.autoplay.stop();
@@ -64,79 +63,66 @@ function Mainswiper() {
     },
     768: {
       slidesPerView: 1,
-      spaceBetween: 0,
+      spaceBetween: 10,
     },
     1000: {
-      slidesPerView: 2.5,
-      spaceBetween: 10,
+      slidesPerView: 1.5,
+      spaceBetween: 20,
     },
     1200: {
       slidesPerView: 3,
       spaceBetween: 10,
-    },
-    2000: {
-      slidesPerView: 3,
-      spaceBetween: 10,
-    },
+    }
   };
   return (
-    <>
-      <section className="main">
-        <h2>메뉴추천가이드</h2>
+    <MarginY>
+      <section className="main mycontainer">
+        <H2>메뉴추천가이드</H2>
         <Swiper
-          ref={swiperRef}
+          ref={storeswiperRef}
           className="mainswiper swiper"
           centeredSlides
-          modules={[Autoplay, Pagination]}
-          pagination={{ type: "fraction", clickable: true }}
+          modules={[Autoplay]}
           loop={true}
           autoplay={{
-            delay: 500,
+            delay: 2000,
             disableOnInteraction: false,
           }}
           speed={speed}
           breakpoints={breakpoints}
-          spaceBetween={10}
-          slidesPerView={2.5}
-          // onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => {
-            setSwiper(swiper);
+          onActiveIndexChange={({ realIndex }) => {
+            setRealIndex(realIndex)
           }}
         >
           {data.map((el, idx) => {
             return (
-              <SwiperSlide className={`slide${idx}`}>
-                <img src={el.src} alt={el.alt} key={idx} />
+              <SwiperSlide className={`slide${idx}`} key={idx}>
+                <img src={el.src} alt={el.alt} />
+                <div className="line"></div>
               </SwiperSlide>
             );
           })}
-          <div className="swiperlength">
-            <p>+ {data.length - 1}</p>
+          <div className="myname d-flex justify-content-center align-items-center">
+            <div className="mainlenghtbtn">
+              <div className="swiperlength">
+                <p>+ {data.length - 1}</p>
+              </div>
+              <RightButton className="mainright" onClick={() => storeswiperRef.current.swiper.slideNext()}><i className="bi bi-arrow-right"></i></RightButton>
+            </div>
           </div>
-          <div className="line"></div>
-          <div className="button-wrapper">
-            {/* <button
-              className="button"
-              onClick={() => {
-                swiper.slidePrev();
-              }}
-            >
-              Prev Slide
-            </button> */}
-            <button
-              onClick={() => {
-                swiper.slideNext();
-              }}
-            >
-              <i class="bi bi-chevron-right"></i>
+          <div className="mainswiperbtns d-flex align-items-center justify-content-center mt-4">
+            <div>
+              {realIndex + 1} / {data.length}
+              <button className={`toggle ${isPlaying ? "bi bi-pause" : "bi bi-play"} mx-4`} onClick={togglePlay}></button>
+            </div>
+            <button className="more">
+              더보기 +
             </button>
           </div>
-          <div className="btns">
-            <button className="toggle" onClick={togglePlay}>stop</button>
-          </div>
+
         </Swiper>
       </section>
-    </>
+    </MarginY>
   );
 }
 

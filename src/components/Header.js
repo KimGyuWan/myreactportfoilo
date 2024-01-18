@@ -7,7 +7,6 @@ const Header = () => {
   const [showListIcon, setShowListIcon] = useState(true);
   const siteMenuRef = useRef(null);
   let chevron = true;
-  // const [check, setCheck] = useState(false)
 
   const toggleSiteVisibility = () => {
     setSiteVisible(!isSiteVisible);
@@ -29,6 +28,8 @@ const Header = () => {
     };
   }, []);
 
+  let iconstyle = "bi bi-chevron-up";
+
   const toggleSiteMenu = () => {
     const siteMenu = siteMenuRef.current;
     if (siteMenu) {
@@ -36,8 +37,8 @@ const Header = () => {
     }
     // setCheck(!check)
     chevron = !chevron;
-    console.log(chevron)
-    console.log(chevron ? "bi bi-chevron-up" : "bi bi-chevron-down")
+    iconstyle = chevron ? "bi bi-chevron-up" : "bi bi-chevron-down"
+    document.querySelector(".login_gnb span i").classList = iconstyle;
   };
 
   return (
@@ -53,17 +54,17 @@ const Header = () => {
           <ul className='login_gnb'>
             <li><a href="#none"><span>메뉴추천가이드</span></a></li>
             <li><div className='d-flex justify-content-between'><a href="#none"><span>메뉴안내</span></a>
-              <span onClick={toggleSiteMenu}><i className={`${chevron ? "bi bi-chevron-down" : "bi bi-chevron-up"}`} style={{ transform: "rotateY(180)" }}></i>{/*<i className={`bi bi-chevron-${check ? "down" : "up"}`}></i>*/}</span></div>
+              <span onClick={toggleSiteMenu}><i className='bi bi-chevron-up' style={{ transform: "rotateY(180)" }}></i></span></div>
               <ul ref={siteMenuRef} className='site_menu'>
-                <li><a href="#none">1리터 대용량</a></li>
-                <li><a href="#none">1.1리터 보틀</a></li>
-                <li><a href="#none">COFFEE</a></li>
-                <li><a href="#none">NON COFFEE</a></li>
-                <li><a href="#none">디카페인</a></li>
-                <li><a href="#none">생과일 주스&티</a></li>
-                <li><a href="#none">스무디&프라페</a></li>
-                <li><a href="#none">디저트</a></li>
-                <li><a href="#none">디저트(배달전용메뉴)</a></li>
+                <li><a className='d2a' href="#none">1리터 대용량</a></li>
+                <li><a className='d2a' href="#none">1.1리터 보틀</a></li>
+                <li><a className='d2a' href="#none">COFFEE</a></li>
+                <li><a className='d2a' href="#none">NON COFFEE</a></li>
+                <li><a className='d2a' href="#none">디카페인</a></li>
+                <li><a className='d2a' href="#none">생과일 주스&티</a></li>
+                <li><a className='d2a' href="#none">스무디&프라페</a></li>
+                <li><a className='d2a' href="#none">디저트</a></li>
+                <li><a className='d2a' href="#none">디저트(배달전용메뉴)</a></li>
               </ul>
             </li>
             <li><a href="#none"><span>매장찾기</span></a></li>
@@ -75,7 +76,7 @@ const Header = () => {
           )}
         </div >
       )}
-      <header id='hd' className='mycontainer mx-auto justify-content-between d-flex align-items-center'>
+      <header id='hd' className='mycontainer mx-auto justify-content-between d-flex align-items-center py-3'>
         <h1><a href="#none"></a></h1>
         {showUl && (
           <ul className='d-flex justify-content-center align-items-center'>
@@ -84,12 +85,12 @@ const Header = () => {
             <li className='px-2'><a href="#none"><span>매장찾기</span></a></li>
           </ul>
         )}
-        <div className='d-flex'>
-          <span className='headericon'><i className="bi bi-search"></i></span>
+        <div className=' headericon'>
+          <span><i className="bi bi-search"></i></span>
           {showListIcon && (
-            <div>
-              <span className='headericon pl-4' onClick={toggleSiteVisibility}><i className="bi bi-list"></i></span>
-            </div>
+            // <div>
+            <span onClick={toggleSiteVisibility}><i className="bi bi-list"></i></span>
+            // </div>
           )}
         </div>
       </header>
