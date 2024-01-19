@@ -1,5 +1,8 @@
 .storeposi {
   position: relative;
+  #storemap {
+    z-index: 0;
+  }
   .storediv {
     position: relative;
     height: 95%;

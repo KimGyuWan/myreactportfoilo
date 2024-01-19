@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './form.scss'
 import { FixedformLg, FixedformSm, FixedChat, FixedKakao } from './style/Commonui'
 import { useForm } from "react-hook-form"
 
 function Form() {
+  const [dim, setDim] = useState(false)
+
+  const checkWidthAndSetDim = () => {
+    const width = window.innerWidth;
+    if (width >= 1000) {
+      setDim(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.classList = dim ? "position-relative dim" : "position-relative";
+
+    window.addEventListener('resize', checkWidthAndSetDim);
+
+    checkWidthAndSetDim();
+
+    return () => {
+      window.removeEventListener('resize', checkWidthAndSetDim);
+    };
+  }, [dim])
 
   const {
     register,
@@ -17,20 +37,20 @@ function Form() {
 
   return (
     <>
-      <FixedKakao className='d-flex d-lg-none'>
+      <FixedKakao className='d-flex d-lg-none kakao'>
         <p>온라인</p><p>문의</p>
       </FixedKakao >
-      <FixedChat className='d-flex d-lg-none'>
+      <FixedChat className='d-flex d-lg-none chat'>
         <div>챗봇</div>
       </FixedChat>
-      <FixedformSm className='d-flex d-lg-none'>
+      <FixedformSm onClick={() => { setDim(true) }} className='d-flex d-lg-none sujest'>
         <div>창업상담</div>
       </FixedformSm>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)} name='form1' className='firstform mycontainer'>
-          <div className='first d-flex justify-content-between py-4 border-bottom'>
+      {dim && <div>
+        <form onSubmit={handleSubmit(onSubmit)} name='form1' className='firstform mycontainer d-block d-lg-none'>
+          <div className='first d-flex justify-content-between py-4 border-bottom align-items-center'>
             <p>창업상담</p>
-            <button><i className="bi bi-x-lg"></i></button>
+            <button className="closedim" onClick={() => { setDim(false) }}><i className="bi bi-x-lg"></i></button>
           </div>
           <div className='py-3'>
             <label htmlFor="name1" className='pb-2'>이름</label>
@@ -209,7 +229,8 @@ function Form() {
             <input className='submitinput' type="submit" value={"상담신청"} />
           </div>
         </form >
-      </div >
+      </div >}
+
       <FixedformLg className='d-none d-lg-block'>
         <section className='fixform d-flex justify-content-center'>
           <div className='fixformdiv container row justify-content-between'>

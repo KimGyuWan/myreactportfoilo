@@ -67,12 +67,49 @@
   }
 }
 
+.dim {
+  overflow-y: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0, 0.5);
+    z-index: 101;
+  }
+}
+
+// 모달팝업 폼
+
 .firstform {
-  position: absolute;
-  width: 560px !important;
+  position: fixed;
+  width: 600px !important;
   height: 610px;
   text-align: left;
   padding: 0 15px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 102;
+
+  .first {
+    line-height: 1;
+
+    p {
+      font-size: 1.4rem;
+    }
+
+    button {
+      border: 0;
+      background-color: transparent;
+      font-size: 1.5rem;
+    }
+  }
+
   input {
     line-height: 2;
   }
@@ -99,10 +136,11 @@
     height: 150px;
     overflow: scroll;
   }
+
   .submitinput {
     background-color: black;
     color: white;
-    font-weight: 300;
+    font-weight: 400;
     border: 0;
     padding: 0.5rem 2rem;
     font-size: 0.9rem;

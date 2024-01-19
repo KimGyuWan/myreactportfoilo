@@ -61,8 +61,8 @@ export const FixedformSm = styled(FixedformLg)`
 width: 4rem;
 height: 4rem;
 left: unset;
-right: 4rem;
-bottom: 3rem;
+right: 1rem;
+bottom: 7.5rem;
 border-radius: 50%;
 display: flex;
 justify-content: center;

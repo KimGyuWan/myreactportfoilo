@@ -21,3 +21,7 @@ i {
   width: 90vw !important;
   margin: 0 auto;
 }
+
+.bpw-header-container {
+  background-color: #0e693c !important;
+}
