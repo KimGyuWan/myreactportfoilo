@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './form.scss'
-import { FixedformLg, FixedformSm, FixedChat, FixedKakao } from './style/Commonui'
+import Openchat from './Openchat'
+import { FixedformLg, FixedformSm } from './style/Commonui'
 import { useForm } from "react-hook-form"
 
 function Form() {
@@ -37,12 +38,7 @@ function Form() {
 
   return (
     <>
-      <FixedKakao className='d-flex d-lg-none kakao'>
-        <p>온라인</p><p>문의</p>
-      </FixedKakao >
-      <FixedChat className='d-flex d-lg-none chat'>
-        <div>챗봇</div>
-      </FixedChat>
+      <Openchat></Openchat>
       <FixedformSm onClick={() => { setDim(true) }} className='d-flex d-lg-none sujest'>
         <div>창업상담</div>
       </FixedformSm>

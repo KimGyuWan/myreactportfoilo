@@ -3,11 +3,13 @@ footer {
   height: 320px;
   text-align: center;
   position: relative;
-  bottom: 110px;
   p {
     margin-bottom: 1rem;
     &:nth-child(2) {
       margin-bottom: 2rem;
     }
   }
+}
+.footerbox {
+  height: 110px;
 }

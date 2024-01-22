@@ -10,6 +10,7 @@ function Footer() {
         <p>Copyright © 2022 포트캔커피 All rights reserved.</p>
         <img src="/img/footercrown.png" alt="footer상훈" />
       </footer>
+      <div className='footerbox d-none d-lg-block'></div>
     </>
   )
 }

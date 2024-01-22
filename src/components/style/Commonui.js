@@ -58,24 +58,15 @@ export const FixedformLg = styled.div`
 `
 
 export const FixedformSm = styled(FixedformLg)`
-width: 4rem;
-height: 4rem;
+width: 3.5rem;
+height: 3.5rem;
 left: unset;
-right: 1rem;
+right: 2.4rem;
 bottom: 7.5rem;
 border-radius: 50%;
 display: flex;
 justify-content: center;
 align-items: center;
 color: white;
-`;
-
-export const FixedChat = styled(FixedformSm)`
-bottom: 7.5rem;
-color: yellow;
-`;
-
-export const FixedKakao = styled(FixedChat)`
-bottom: 12rem;
-flex-direction: column;
+font-size: 0.9rem;
 `;
