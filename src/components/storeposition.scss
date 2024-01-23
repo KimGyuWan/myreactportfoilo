@@ -20,6 +20,27 @@
         overflow: scroll;
         // 스크롤 만들기
 
+        //
+        .storelistinput {
+          display: flex;
+          justify-content: space-between;
+          padding: 1rem;
+          position: sticky;
+          top: 0;
+          left: 0;
+          right: 0;
+          background-color: #fff;
+          input:focus {
+            outline: none;
+          }
+          input,
+          button {
+            border: 0;
+            background-color: transparent;
+            line-height: 2;
+          }
+        }
+
         .imglist {
           padding: 1rem;
           width: 100%;
@@ -27,7 +48,7 @@
           box-sizing: border-box;
           img {
             width: 5vw;
-            height: auto;
+            height: 100%;
             cursor: pointer;
           }
 

@@ -110,25 +110,3 @@ const Header = () => {
 };
 
 export default Header;
-
-<Navbar bg="light" expand="lg" fixed="top">
-  <Navbar.Brand href="#home">Brand</Navbar.Brand>
-  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-  <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto" defaultActiveKey="#home" as="ul">
-      <Nav.Item as="li">
-        <Nav.Link href="#home">Home</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link href="#section1">Section 1</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link href="#section2">Section 2</Nav.Link>
-      </Nav.Item>
-      <Nav.Item as="li">
-        <Nav.Link href="#section3">Section 3</Nav.Link>
-      </Nav.Item>
-    </Nav>
-  </Navbar.Collapse>
-</Navbar>
-

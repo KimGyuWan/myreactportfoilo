@@ -45,7 +45,7 @@ function Form() {
       {dim && <div>
         <form onSubmit={handleSubmit(onSubmit)} name='form1' className='firstform mycontainer d-block d-lg-none'>
           <div className='first d-flex justify-content-between py-4 border-bottom align-items-center'>
-            <p>창업상담</p>
+            <p className='my-0'>창업상담</p>
             <button className="closedim" onClick={() => { setDim(false) }}><i className="bi bi-x-lg"></i></button>
           </div>
           <div className='py-3'>

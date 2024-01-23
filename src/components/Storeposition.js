@@ -36,6 +36,7 @@ function Storeposition(props) {
     const location = new naver.maps.LatLng(markerData[mapinfo].lat, markerData[mapinfo].lng);
     const mapOptions = {
       center: location,
+      scrollWheel: false,
       zoom: 16,
       zoomControl: true,
       zoomControlOptions: {
@@ -66,14 +67,16 @@ function Storeposition(props) {
       <div id={props.keyid}>
         <Marginbottom>
           <H2>매장안내</H2>
-          <section className='storeposi mycontainer'>
+          <section className='storeposi'>
             {/* <div id="map" style={{ width: "90vw", height: "80vh" }}></div> */}
-            <div id='storemap' ref={mapElement} style={{ width: "90vw", height: "80vh" }}>
+            <div id='storemap' ref={mapElement} style={{ width: "100vw", height: "80vh" }}>
 
-              <div className='storediv'>
+              <div className='storediv position-relative'>
                 <div className='storelist'>
-                  <input type="text" placeholder='매장안내' />
-                  <button>검색</button>
+                  <div className='storelistinput border-bottom'>
+                    <input type="text" placeholder='매장안내' className='w-100' />
+                    <button><i className="bi bi-search"></i></button>
+                  </div>
                   {
                     markerData.map((el, idx) => {
                       return (
