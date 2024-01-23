@@ -76,8 +76,15 @@
 }
 
 #hd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
   h1 {
     width: 0;
+    margin-bottom: 0 !important;
 
     a {
       display: block;
@@ -90,10 +97,18 @@
       display: block;
       height: 0;
       padding-top: 38%;
-      background-image: url(https://cdn.imweb.me/thumbnail/20231113/4833503636355.png);
+      background-image: url("../../public/img/main_logo.png");
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
+    }
+  }
+
+  ul {
+    li {
+      a {
+        transition: 0.5s;
+      }
     }
   }
 }

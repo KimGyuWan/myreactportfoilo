@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { H2, MarginY } from './style/Commonui';
+import { H2, Marginbottom } from './style/Commonui';
 import './storeposition.scss'
 
-function Storeposition() {
+function Storeposition(props) {
   const [mapinfo, setMapInfo] = useState(0);
   const mapElement = useRef(null);
   const markerData = [
@@ -55,47 +55,46 @@ function Storeposition() {
 
   useEffect(() => {
     if (window.naver && window.naver.maps) {
-      initializeMap(); // 지도 초기화 함수 호출
+      initializeMap();
     }
   }, [mapinfo]);
 
   console.log(process.env.REACT_APP_NAVER_MAP_KEY)
 
   return (
-    // ... JSX 코드 ...
     <>
-      <MarginY>
-        <H2>매장안내</H2>
-        <section className='storeposi mycontainer'>
-          {/* <div id="map" style={{ width: "90vw", height: "80vh" }}></div> */}
-          <div id='storemap' ref={mapElement} style={{ width: "90vw", height: "80vh" }}>
+      <div id={props.keyid}>
+        <Marginbottom>
+          <H2>매장안내</H2>
+          <section className='storeposi mycontainer'>
+            {/* <div id="map" style={{ width: "90vw", height: "80vh" }}></div> */}
+            <div id='storemap' ref={mapElement} style={{ width: "90vw", height: "80vh" }}>
 
-            <div className='storediv'>
-              <div className='storelist'>
-                <input type="text" placeholder='매장안내' />
-                <button>검색</button>
-                {
-                  markerData.map((el, idx) => {
-                    return (
-                      <React.Fragment key={`list${idx}`}>
-                        <div className={`d-flex imglist list${idx}`} onClick={() => { setMapInfo(idx) }}>
-                          <img className='d-none d-lg-block' src="/img/store/positionpic.png" alt="가게사진" />
-                          <div>
-                            <h4>{el.title}</h4>
-                            <p className='d-none d-lg-block'>{el.posi}</p>
+              <div className='storediv'>
+                <div className='storelist'>
+                  <input type="text" placeholder='매장안내' />
+                  <button>검색</button>
+                  {
+                    markerData.map((el, idx) => {
+                      return (
+                        <React.Fragment key={`list${idx}`}>
+                          <div className={`d-flex imglist list${idx}`} onClick={() => { setMapInfo(idx) }}>
+                            <img className='d-none d-lg-block' src="/img/store/positionpic.png" alt="가게사진" />
+                            <div>
+                              <h4>{el.title}</h4>
+                              <p className='d-none d-lg-block'>{el.posi}</p>
+                            </div>
                           </div>
-                        </div>
-                      </React.Fragment>
-                    )
-                  })
-                }
+                        </React.Fragment>
+                      )
+                    })
+                  }
+                </div>
               </div>
             </div>
-          </div>
-
-        </section>
-
-      </MarginY>
+          </section>
+        </Marginbottom>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./mainswiper.scss";
-import { H2, RightButton, MarginY } from './style/Commonui';
+import { H2, RightButton, Marginbottom } from './style/Commonui';
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
@@ -10,7 +10,7 @@ import { Autoplay } from "swiper/modules";
 
 SwiperCore.use([Autoplay]);
 
-function Mainswiper() {
+function Mainswiper(props) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [realIndex, setRealIndex] = useState(0);
   const storeswiperRef = useRef(null);
@@ -75,54 +75,58 @@ function Mainswiper() {
     }
   };
   return (
-    <MarginY>
-      <section className="main mycontainer">
-        <H2>메뉴추천가이드</H2>
-        <Swiper
-          ref={storeswiperRef}
-          className="mainswiper swiper"
-          centeredSlides
-          modules={[Autoplay]}
-          loop={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          speed={speed}
-          breakpoints={breakpoints}
-          onActiveIndexChange={({ realIndex }) => {
-            setRealIndex(realIndex)
-          }}
-        >
-          {data.map((el, idx) => {
-            return (
-              <SwiperSlide className={`slide${idx}`} key={idx}>
-                <img src={el.src} alt={el.alt} />
-                <div className="line"></div>
-              </SwiperSlide>
-            );
-          })}
-          <div className="myname d-flex justify-content-center align-items-center">
-            <div className="mainlenghtbtn">
-              <div className="swiperlength">
-                <p>+ {data.length - 1}</p>
+    <>
+      <div id={props.keyid}>
+        <Marginbottom>
+          <section className="main mycontainer">
+            <H2>메뉴추천가이드</H2>
+            <Swiper
+              ref={storeswiperRef}
+              className="mainswiper swiper"
+              centeredSlides
+              modules={[Autoplay]}
+              loop={true}
+              autoplay={{
+                delay: 2000,
+                disableOnInteraction: false,
+              }}
+              speed={speed}
+              breakpoints={breakpoints}
+              onActiveIndexChange={({ realIndex }) => {
+                setRealIndex(realIndex)
+              }}
+            >
+              {data.map((el, idx) => {
+                return (
+                  <SwiperSlide className={`slide${idx}`} key={idx}>
+                    <img src={el.src} alt={el.alt} />
+                    <div className="line"></div>
+                  </SwiperSlide>
+                );
+              })}
+              <div className="myname d-flex justify-content-center align-items-center">
+                <div className="mainlenghtbtn">
+                  <div className="swiperlength">
+                    <p>+ {data.length - 1}</p>
+                  </div>
+                  <RightButton className="mainright" onClick={() => storeswiperRef.current.swiper.slideNext()}><i className="bi bi-arrow-right"></i></RightButton>
+                </div>
               </div>
-              <RightButton className="mainright" onClick={() => storeswiperRef.current.swiper.slideNext()}><i className="bi bi-arrow-right"></i></RightButton>
-            </div>
-          </div>
-          <div className="mainswiperbtns d-flex align-items-center justify-content-center mt-4">
-            <div>
-              {realIndex + 1} / {data.length}
-              <button className={`toggle ${isPlaying ? "bi bi-pause" : "bi bi-play"} mx-4`} onClick={togglePlay}></button>
-            </div>
-            <button className="more">
-              더보기 +
-            </button>
-          </div>
+              <div className="mainswiperbtns d-flex align-items-center justify-content-center mt-4">
+                <div>
+                  {realIndex + 1} / {data.length}
+                  <button className={`toggle ${isPlaying ? "bi bi-pause" : "bi bi-play"} mx-4`} onClick={togglePlay}></button>
+                </div>
+                <button className="more">
+                  더보기 +
+                </button>
+              </div>
 
-        </Swiper>
-      </section>
-    </MarginY>
+            </Swiper>
+          </section>
+        </Marginbottom>
+      </div>
+    </>
   );
 }
 

@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import './storepic.scss';
 import { H2 } from './style/Commonui';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { MarginY } from './style/Commonui';
+import { Marginbottom } from './style/Commonui';
 import 'swiper/css';
 import { Autoplay } from "swiper/modules";
 
@@ -45,7 +45,7 @@ function Storepic() {
   ]
 
   return (
-    <MarginY>
+    <Marginbottom>
       <H2>매장사진</H2>
       <section className='store mycontainer'>
         <Swiper
@@ -74,7 +74,7 @@ function Storepic() {
 
         </Swiper>
       </section >
-    </MarginY>
+    </Marginbottom>
   )
 }
 

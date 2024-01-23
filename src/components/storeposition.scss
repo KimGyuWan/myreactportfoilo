@@ -1,44 +1,48 @@
-.storeposi {
-  position: relative;
-  #storemap {
-    z-index: 0;
-  }
-  .storediv {
+#content3 {
+  padding-top: 88px;
+
+  .storeposi {
     position: relative;
-    height: 95%;
-    .storelist {
-      position: absolute;
-      top: 3%;
-      left: 3%;
-      z-index: 1;
-      width: 25%;
-      background-color: white;
-      height: 100%;
-      overflow: scroll;
-      // 스크롤 만들기
+    #storemap {
+      z-index: 0;
+    }
+    .storediv {
+      position: relative;
+      height: 95%;
+      .storelist {
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        z-index: 1;
+        width: 25%;
+        background-color: white;
+        height: 100%;
+        overflow: scroll;
+        // 스크롤 만들기
 
-      .imglist {
-        padding: 1rem;
-        width: 100%;
-        border-bottom: 1px solid #ccc;
-        box-sizing: border-box;
-        img {
-          width: 5vw;
-          height: auto;
-          cursor: pointer;
-        }
-
-        div {
-          margin-left: 1rem;
-          h4 {
-            font-size: 1rem;
-            margin-top: 0.3rem;
+        .imglist {
+          padding: 1rem;
+          width: 100%;
+          border-bottom: 1px solid #ccc;
+          box-sizing: border-box;
+          img {
+            width: 5vw;
+            height: auto;
             cursor: pointer;
           }
-          p {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            cursor: pointer;
+
+          div {
+            margin-left: 1rem;
+            h4 {
+              font-size: 1rem;
+              margin-top: 0.3rem;
+              cursor: pointer;
+            }
+            p {
+              font-size: 0.9rem;
+              margin-top: 0.5rem;
+              cursor: pointer;
+            }
           }
         }
       }

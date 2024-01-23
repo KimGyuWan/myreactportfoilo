@@ -229,7 +229,7 @@ function Form() {
 
       <FixedformLg className='d-none d-lg-block'>
         <section className='fixform d-flex justify-content-center'>
-          <div className='fixformdiv container row justify-content-between'>
+          <div className='fixformdiv container d-flex justify-content-between'>
             <div className='propos'>
               <p className='proposal mb-2'>창업상담</p>
               <p className='proposalnum'>1544-8173</p>

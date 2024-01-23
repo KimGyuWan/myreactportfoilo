@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import './header.scss';
 
 const Header = () => {
@@ -14,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const breakpoint = 1000;
+      const breakpoint = 992;
       setShowUl(window.innerWidth >= breakpoint);
       setShowListIcon(window.innerWidth < breakpoint);
     };
@@ -76,28 +77,58 @@ const Header = () => {
           )}
         </div >
       )}
-      <header id='hd' className='mycontainer mx-auto justify-content-between d-flex align-items-center py-3'>
-        <h1><a href="#none"></a></h1>
-        {showUl && (
-          <ul className='d-flex justify-content-center align-items-center'>
-            <li className='px-2'><a href="#none"><span>메뉴추천가이드</span></a></li>
-            <li className='px-2'><a href="#none"><span>베스트메뉴</span></a></li>
-            <li className='px-2'><a href="#none"><span>매장찾기</span></a></li>
-          </ul>
-        )}
-        <div className=' headericon'>
-          <span><i className="bi bi-search"></i></span>
-          {showListIcon && (
-            // <div>
-            <span onClick={toggleSiteVisibility}><i className="bi bi-list"></i></span>
-            // </div>
+      <Navbar id='hd' className='py-3 border-bottom'>
+        <div className='mycontainer justify-content-between d-flex align-items-center'>
+          <h1><a href="/"></a></h1>
+          {showUl && (
+            <Navbar.Collapse id="basic-navbar-nav" className='justify-content-center d-flex align-items-center'>
+              <Nav className="d-flex justify-content-center align-items-center" defaultActiveKey="#home" as="ul">
+                <Nav.Item as="li">
+                  <Nav.Link href="#content1">메뉴추천가이드</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Nav.Link href="#content2">베스트메뉴</Nav.Link>
+                </Nav.Item>
+                <Nav.Item as="li">
+                  <Nav.Link href="#content3">매장찾기</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Navbar.Collapse>
           )}
+          <div className=' headericon'>
+            <span><i className="bi bi-search"></i></span>
+            {showListIcon && (
+              // <div>
+              <span onClick={toggleSiteVisibility}><i className="bi bi-list"></i></span>
+              // </div>
+            )}
+          </div>
         </div>
-      </header>
-      {/* <div style={{ backgroundColor: "red", width: "50vw", height: "30vh" }}>asd</div> */}
+      </Navbar>
     </>
   );
 };
 
 export default Header;
+
+<Navbar bg="light" expand="lg" fixed="top">
+  <Navbar.Brand href="#home">Brand</Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto" defaultActiveKey="#home" as="ul">
+      <Nav.Item as="li">
+        <Nav.Link href="#home">Home</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link href="#section1">Section 1</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link href="#section2">Section 2</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link href="#section3">Section 3</Nav.Link>
+      </Nav.Item>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
 

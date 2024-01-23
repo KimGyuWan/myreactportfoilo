@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import { H2, Menucontentsub, Menucontenthead, Menucontenthash, LeftButton, RightButton, MarginY } from './style/Commonui';
+import { H2, Menucontentsub, Menucontenthead, Menucontenthash, LeftButton, RightButton, Marginbottom } from './style/Commonui';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import './bestmenu.scss';
 
-function Bestmenu() {
+function Bestmenu(props) {
   const menuswiperRef = useRef(null);
   const [tabNum, settabNum] = useState("liter");
 
@@ -227,49 +227,53 @@ function Bestmenu() {
     }
   }
   return (
-    <MarginY>
-      <section className='bestmenu mycontainer'>
-        <H2>메뉴안내</H2>
-        <ul className='menugnb row'>
-          {
-            data.list.map((el, idx) => {
-              return (
-                <li className='col-4 mb-2' key={idx} onClick={(e) => { handleClick(e, el.href) }}>{el.nm}
-                </li>
-              )
-            })
-          }
-        </ul>
-        <div style={{ height: "70vh" }}>
-          <Swiper
-            ref={menuswiperRef}
-            className="mainswiper swiper"
-            breakpoints={breakpoints}
-          >
-            {
-              data.menu.map((el, idx) => {
-                return (
-                  <React.Fragment key={`list${idx}`}>
-                    {tabNum === el.href ?
-                      <SwiperSlide key={idx} >
-                        <img src={el.src} alt='카페메뉴사진' />
-                        <p className='menulist'><Menucontentsub>{el.sub}</Menucontentsub></p>
-                        <p className='menulist'><Menucontenthead>{el.nm}</Menucontenthead></p>
-                        <p className='menulist'><Menucontenthash>{el.hash}</Menucontenthash></p>
-                      </SwiperSlide>
-                      : null}
-                  </React.Fragment>
-                )
-              })
-            }
-            <div className="bestmenubtns d-flex align-items-center">
-              <LeftButton onClick={() => menuswiperRef.current.swiper.slidePrev()}><i className="bi bi-arrow-left"></i></LeftButton>
-              <RightButton onClick={() => menuswiperRef.current.swiper.slideNext()}><i className="bi bi-arrow-right"></i></RightButton>
-            </div>
-          </Swiper>
-        </div >
-      </section >
-    </MarginY>
+    <>
+      <div id={props.keyid}>
+        <Marginbottom>
+          <section className='bestmenu mycontainer'>
+            <H2>메뉴안내</H2>
+            <ul className='menugnb row'>
+              {
+                data.list.map((el, idx) => {
+                  return (
+                    <li className='col-4 mb-2' key={idx} onClick={(e) => { handleClick(e, el.href) }}>{el.nm}
+                    </li>
+                  )
+                })
+              }
+            </ul>
+            <div style={{ height: "70vh" }}>
+              <Swiper
+                ref={menuswiperRef}
+                className="mainswiper swiper"
+                breakpoints={breakpoints}
+              >
+                {
+                  data.menu.map((el, idx) => {
+                    return (
+                      <React.Fragment key={`list${idx}`}>
+                        {tabNum === el.href ?
+                          <SwiperSlide key={idx} >
+                            <img src={el.src} alt='카페메뉴사진' />
+                            <p className='menulist'><Menucontentsub>{el.sub}</Menucontentsub></p>
+                            <p className='menulist'><Menucontenthead>{el.nm}</Menucontenthead></p>
+                            <p className='menulist'><Menucontenthash>{el.hash}</Menucontenthash></p>
+                          </SwiperSlide>
+                          : null}
+                      </React.Fragment>
+                    )
+                  })
+                }
+                <div className="bestmenubtns d-flex align-items-center">
+                  <LeftButton onClick={() => menuswiperRef.current.swiper.slidePrev()}><i className="bi bi-arrow-left"></i></LeftButton>
+                  <RightButton onClick={() => menuswiperRef.current.swiper.slideNext()}><i className="bi bi-arrow-right"></i></RightButton>
+                </div>
+              </Swiper>
+            </div >
+          </section >
+        </Marginbottom>
+      </div>
+    </>
   )
 }
 
